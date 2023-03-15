@@ -1,0 +1,107 @@
+@php
+    if (session()->has('account_name')) {
+        switch (session('level_id')) {
+            case (1):
+            break;
+            case (2):
+            break;
+            case (3):
+            break;
+            default:
+                header("Location: signin");
+                exit;
+        }
+    } else {
+        header("location: signin");
+        exit;
+    }
+@endphp
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="..\resources\css\AddGirl.css">
+    <title>Add Girl</title>
+</head>
+<body>
+    <div class="h1">Admin</div>
+    <div class="menu">
+        @php
+            require_once '.\menus\homepage.php';
+            require_once '.\menus\girl.php';
+            require_once '.\menus\origin.php';
+            require_once '.\menus\photo.php';
+            if(session('level_id') == 1) {
+                require_once '.\menus\level.php';
+                require_once '.\menus\account.php';
+            }
+        @endphp 
+        <div>
+            <ol>
+                @php
+                    echo 'Account: ' . session('account_name');
+                @endphp
+                <li>
+                    <a href="signout">Signout</a>
+                </li>
+            </ol>
+        </div>   
+    </div>
+    <div class="content">
+        <div class="title">
+            Add Girl
+            <br>
+            @php
+            if (session()->has('message')) {
+                echo session('message');
+                session()->forget('message');
+            }
+            @endphp
+        </div>
+        <div class="form">
+            <form method="POST" action="{{ route('add_girl_process') }}" enctype="multipart/form-data">
+                @csrf
+                <div>
+                    Name
+                    <br>
+                    <input type="text" name="girl_name">
+                </div>
+                <br>
+                <div>
+                    Infomation
+                    <br>
+                    <input type="text" name="girl_info">
+                </div>
+                <br>
+                <div>
+                    Avatar
+                    <br>
+                    <input type="file" name="girl_avatar">
+                </div>
+                <br>
+                <div>
+                    Price
+                    <br>
+                    <input type="number" name="price">
+                </div>
+                <br>
+                <div>
+                    Origin
+                    <br>
+                    <select name="origin_id">
+                        @foreach ($origins as $origin)
+                            <option value="{{ $origin->origin_id }}">{{ $origin->origin_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <br>
+                <button type="submit">
+                    Add
+                </button>
+            </form>
+        </div>
+      </div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+html {
+    height: 100%;
+}
+body {
+    width: 100%;
+    height: 100vh;
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    background: linear-gradient(#141e30, #243b55);
+    display: flex;
+    flex-wrap: wrap;
+    font-weight: bolder;
+}
+.menu a {
+    text-decoration: none;
+    color: black;
+}
+.menu a:hover {
+    font-size: 25px;
+    color: aqua;
+}
+.logo {
+    width: 17%;
+    height: 15%;
+    margin-left: 3%;
+    color: aquamarine;
+    text-align: center;
+    font-size: 100px;
+    line-height: 150px;
+    align-items: start;
+}
+.logo img {
+    margin-top: 7%;
+    height: 70%;
+    border-radius: 15px;
+    border: aquamarine solid 2px;
+}
+.banner {
+    width: 51%;
+    height: 15%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.search {
+    width: 22%;
+    height: 15%;
+    align-items: end;
+}
+.menu {
+    background-color: antiquewhite;
+    width: 17%;
+    height: 83%;
+    margin-left: 3%;
+    border-radius: 15px;
+}
+.menu div {
+    width: 90%;
+    height: fit-content;
+    margin: 30px 0 0 10%;
+    font-size: 20px;
+    font-weight: bolder;
+}
+.menu ol {
+    list-style-type: none;
+    padding: 0;
+}
+.menu ol li {
+    margin-left: 10%;
+    display: none;
+}
+.menu ol:hover li {
+    display: block;
+}
+.content {
+    width: 75%;
+    height: 83%;
+    background-color: antiquewhite;
+    margin: 0 0 2% 2%;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+.title {
+    width: 90%;
+    height: fit-content;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    display: flex;
+    text-align: center;
+}
+.title div {
+    width: 100%;
+    height: fit-content;
+    border-bottom: black solid 2px;
+    border-right: black solid 2px;
+}
+.girl {
+    width: 90%;
+    height: fit-content;
+    margin-left: 5%;
+    margin-top: 1%;
+    display: flex;
+    text-align: center;
+}
+.girl div {
+    width: 100%;
+    height: 100px;
+    border-bottom: black solid 2px;
+    border-right: black solid 2px;
+    line-height: 75px;
+}
+.girl div img {
+    height: 100%;
+}
+.girl a {
+    text-decoration: none;
+    color: black;
+}
+.total {
+    width: 90%;
+    height: fit-content;
+    margin-left: 5%;
+    margin-top: 1%;
+    display: flex;
+    text-align: center;
+}
+.total div {
+    width: 16.6%;
+    height: fit-content;
+    margin-left: 83.4%;
+    margin-bottom: 2%;
+    border: none;
+    border-bottom: black solid 2px;
+    line-height: 20px;
+}

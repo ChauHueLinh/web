@@ -1,0 +1,162 @@
+html {
+    height: 100%;
+}
+body {
+    width: 100%;
+    height: 100vh;
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    background: linear-gradient(#141e30, #243b55);
+    display: flex;
+    flex-wrap: wrap;
+    font-weight: bolder;
+}
+body a {
+    text-decoration: none;
+    color: black;
+}
+body a:hover {
+    font-size: 25px;
+    color: aqua;
+}
+.h1 {
+    width: 100%;
+    height: 15%;
+    color: aquamarine;
+    text-align: center;
+    font-size: 100px;
+    line-height: 150px;
+}
+.menu {
+    background-color: antiquewhite;
+    width: 17%;
+    height: 83%;
+    margin-left: 3%;
+    border-radius: 15px;
+}
+.menu div {
+    width: 90%;
+    height: fit-content;
+    margin: 30px 0 0 10%;
+    font-size: 20px;
+    font-weight: bolder;
+}
+.menu ol {
+    list-style-type: none;
+    padding: 0;
+}
+.menu ol li {
+    margin-left: 10%;
+    display: none;
+}
+.menu ol:hover li {
+    display: block;
+}
+.content {
+    width: 75%;
+    height: 83%;
+    background-color: antiquewhite;
+    margin: 0 0 2% 2%;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items:center;
+}
+.title {
+    width: 100%;
+    height: 5%;
+    margin-top: 2%;
+    font-size: 30px;
+    color: black;
+    text-align: center;
+}
+.before-after {
+    width: 100%;
+    height: 5%;
+    display: flex;
+}
+.before-after div {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    color: black;
+}
+.before {
+    width: 42.5%;
+    height: 85%;
+    margin-left: 5%;
+    margin-bottom: 3%;
+    border-radius: 15px;
+    background: linear-gradient(#141e30, #243b55);
+    font-size: 25px;
+    color: white;
+    line-height: 35px;
+}
+.before div {
+    margin-left: 5%;
+    margin-top: 5%;
+}
+.form {
+    width: 42.5%;
+    height: 85%;
+    margin-left: 5%;
+    margin-bottom: 3%;
+    border-radius: 15px;
+    background: linear-gradient(#141e30, #243b55);
+    font-size: 25px;
+    line-height: 35px;
+}
+form {
+    width: 80%;
+    height: 90%;
+    margin: 5% 10% 5% 10%;
+    color: white;
+}
+.form input {
+    width: 100%;
+    height: 35px;
+    background-color: transparent;
+    border: 0;
+    border-bottom: solid 2px aquamarine;
+    box-shadow: none;
+    font-size: 20px;
+    color: white;
+}
+.form select {
+    background-color: transparent;
+    width: 100%;
+    height: 35px;
+    border: 0;
+    border-bottom: solid 2px aquamarine;
+    color: white;
+    font-size: 20px;
+}
+.form option {
+    background-color: #243b55;
+    width: 100%;
+    height: 35px;
+    border: 0;
+    border-bottom: solid 2px aquamarine;
+    color: white;
+    font-size: 20px;
+}
+button {
+    width: 30%;
+    height: 50px;
+    margin-left: 35%;
+    background-color: transparent;
+    border: aquamarine 1px solid;
+    border-radius: 15px;
+    color: aquamarine;
+    font-size: 30px;
+}
+button:hover {
+    background: #03e9f4;
+    color: black;
+    border-radius: 15px;
+    box-shadow: 0 0 5px #03e9f4,
+                0 0 25px #03e9f4,
+                0 0 50px #03e9f4,
+                0 0 100px #03e9f4;
+}
