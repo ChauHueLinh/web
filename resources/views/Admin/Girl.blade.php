@@ -23,17 +23,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="..\resources\css\Girl.css">
+    <link rel="stylesheet" href="..\resources\css\menuAdmin.css">
     <title>Girl</title>
 </head>
 <body>
-    <div class="h1">Admin</div>
-    <div class="search">
-        <form action="">
-            <input type="text" name="name">
-            <button><i>Search</i></button>
-        </form>
+    <div class="h1">
+        <div class="admin">Admin</div>
     </div>
     <div class="menu">
+        <div class="search">
+            <form action="">
+                <input type="text" name="name">
+                <button><i>Search</i></button>
+            </form>
+        </div>
         @php
             require_once '.\menus\homepage.php';
             require_once '.\menus\girl.php';
@@ -44,16 +47,14 @@
                 require_once '.\menus\account.php';
             }
         @endphp 
-        <div>
-            <ol>
-                @php
-                    echo 'Account: ' . session('account_name');
-                @endphp
-                <li>
-                    <a href="signout">Signout</a>
-                </li>
-            </ol>
-        </div>   
+        <div class="user" id="user">
+            @php
+                echo 'User: ' . session('account_name');
+            @endphp
+        </div>
+        <div class="user-action-hide" id="user-action">
+            <a href="signout">Signout</a>
+        </div>
     </div>
     <div class="content">
         @php
@@ -94,5 +95,6 @@
             {{ $girls->links() }}
         </div>
     </div>
+    <script src="../resources/js/menuAdmin.js"></script>
 </body>
 </html>

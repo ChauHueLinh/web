@@ -1,100 +1,67 @@
-html {
-    height: 100%;
-}
 body {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     margin:0;
     padding:0;
-    font-family: sans-serif;
     background: linear-gradient(#141e30, #243b55);
     display: flex;
     flex-wrap: wrap;
-    font-weight: bolder;
-}
-.menu a {
-    text-decoration: none;
-    color: black;
-}
-.menu a:hover {
-    font-size: 25px;
-    color: aqua;
 }
 .h1 {
-    width: 50%;
-    height: 15%;
-    margin-left: 25%;
+    width: 100%;
+    height: 10%;
+    position: relative;
+}
+.admin {
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
     color: aquamarine;
-    text-align: center;
-    font-size: 100px;
-    line-height: 150px;
+    font-weight: 900;
 }
 .search {
-    width: 22%;
-    height: 15%;
-    text-align: center;
-    align-items: end;
+    width: fit-content;
+    height: fit-content;
+    position: sticky;
+    right: 0;
+    bottom: 0;
 }
 .search form {
     margin-top: 10%;
 }
 .search input {
-    width: 75%;
+    width: 60%;
     height: 34px;
     border: none;
-    border-bottom: aquamarine solid 2px;
+    border-bottom: black solid 2px;
     background-color: transparent;
-    font-size: 30px;
-    color: aquamarine;
+    color: black;
     border-radius: 15px;
 }
 .search button {
-    margin-top: 0px;
-    width: 20%;
-    height: 30px;
+    width: fit-content;
+    height: 40px;
     border-radius: 15px;
     background-color: transparent;
-    border: aquamarine solid 2px;
-    color: aquamarine;
-}
-.menu {
-    background-color: antiquewhite;
-    width: 17%;
-    height: 83%;
-    margin-left: 3%;
-    border-radius: 15px;
-}
-.menu div {
-    width: 90%;
-    height: fit-content;
-    margin: 30px 0 0 10%;
-    font-size: 20px;
-    font-weight: bolder;
-}
-.menu ol {
-    list-style-type: none;
-    padding: 0;
-}
-.menu ol li {
-    margin-left: 10%;
-    display: none;
-}
-.menu ol:hover li {
-    display: block;
+    border: black solid 2px;
+    color: black;
 }
 .content {
-    width: 75%;
-    height: 83%;
-    background-color: antiquewhite;
-    margin: 0 0 2% 2%;
+    width: 84%;
+    height: 89%;
     border-radius: 15px;
+    background-color: antiquewhite;
     display: flex;
     flex-wrap: wrap;
 }
 .card {
     width: 16.4%;
-    height: 43%;
-    margin: 2% 0 0 3%;
+    height: 45%;
+    margin: 1% 0 0 3%;
     background-color: black;
     border-radius: 15px;
     color: black;  
@@ -102,11 +69,11 @@ body {
 }
 .card div {
     width: 90%;
-    height: 40%;
-    margin: 90% 0 0 5%;
+    height: fit-content;
     word-break:break-all;
     position: absolute;
-    padding-bottom: 0px;
+    bottom: 10px;
+    left: 10px;
 }
 .card img {
     border-radius: 15px;
@@ -122,24 +89,25 @@ body {
 }
 .page {
     width: 100%;
-    height: 8%;
+    height: 4%;
 }
 .pagination {
     width: 50%;
     height: 100%;
-    margin-left: 25%;
     display: flex;
     list-style: none;
+    transform: translate(-50%, -50%);
+    margin-left: 50%;
 }
 .page-item {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     text-align: center;
     border: #141e30 solid 1px;
     margin-right: 5px;
     font-size: 20px;
     border-radius: 5px;
-    line-height: 30px;
+    line-height: 25px;
 }
 .page-link {
     text-decoration: none;

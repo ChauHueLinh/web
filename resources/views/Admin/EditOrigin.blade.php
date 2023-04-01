@@ -22,67 +22,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="..\resources\css\EditOrigin.css">
+    <link rel="stylesheet" href="..\resources\css\menuAdmin.css">
     <title>Edit Origin</title>
 </head>
 <body>
     <div class="h1">Admin</div>
     <div class="menu">
-        <div>
-            <a href=".\">Home Page</a>
+        @php
+            require_once '.\menus\homepage.php';
+            require_once '.\menus\girl.php';
+            require_once '.\menus\origin.php';
+            require_once '.\menus\photo.php';
+            if(session('level_id') == 1) {
+                require_once '.\menus\level.php';
+                require_once '.\menus\account.php';
+            }
+        @endphp 
+        <div class="user" id="user">
+            @php
+                echo 'User: ' . session('account_name');
+            @endphp
         </div>
-        <div>
-            <ol>
-                Girl
-                <li>
-                    <a href=".\girl">Girl List</a>
-                </li>
-                <li>
-                    <a href=".\add_girl">Add Girl</a>
-                </li>
-            </ol>
+        <div class="user-action-hide" id="user-action">
+            <a href="signout">Signout</a>
         </div>
-        <div>
-            <ol>
-                Origin
-                <li>
-                    <a href=".\origin">Origin List</a>
-                </li>
-                <li>
-                    <a href=".\add_origin">Add Origin</a>
-                </li>
-            </ol>
-        </div>
-        @if (session('level_id') == 1)
-            <div>
-                <ol>
-                    Level
-                    <li>
-                        <a href=".\level">Level List</a>
-                    </li>
-                    <li>
-                        <a href=".\add_level">Add Level</a>
-                    </li>
-                </ol>
-            </div>
-            <div>
-                <ol>
-                    Account
-                    <li>
-                        <a href=".\account">Account List</a>
-                    </li>
-                </ol>
-            </div>
-        @endif 
-        <div>
-            <ol>
-                @php
-                    echo session('account_name');
-                @endphp
-                <li>
-                    <a href="signout">Signout</a>
-                </li>
-            </ol>
-        </div>   
     </div>
     <div class="content">
         <div class="title">Edit origin</div>
@@ -121,5 +84,6 @@
             </form>
         </div>
     </div>
+    <script src="../resources/js/menuAdmin.js"></script>
 </body>
 </html>

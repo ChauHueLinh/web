@@ -45,14 +45,12 @@ class CartController extends Controller
         }
         session()->put('total_item', count($cart));
         session()->put('cart', $cart);
-        // echo json_encode(session()->all());
         return back();
     }
     public function bill() {
         $origins = \App\models\Origin::all();
         $cart = session('cart');
         $count = count($cart);
-        echo $count;
         if($count == 0) {
             return redirect('');
         } else {
@@ -76,7 +74,6 @@ class CartController extends Controller
         }
         session()->put('total_item', count($cart));
         session()->put('cart', $cart);
-        // echo json_encode($cart);
         return back();
     }
 }

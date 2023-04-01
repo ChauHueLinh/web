@@ -1,0 +1,56 @@
+.menu {
+    background-color: antiquewhite;
+    width: 12%;
+    height: 84%;
+    margin: 0 1% 0 1%;
+    padding-left: 1%;
+    border-radius: 15px;
+}
+.homepage {
+    margin-top: 5%;
+}
+.homepage a {
+    text-decoration: none;
+    color: black;
+    font-weight: 900;
+}
+.cart {
+    margin-top: 5%;
+}
+.cart a {
+    text-decoration: none;
+    color: black;
+    font-weight: 900;
+}
+.origin {
+    margin-top: 5%;
+    cursor: pointer;
+    font-weight: 900;
+}
+.origin-action {
+    margin-left: 10%;
+}
+.origin-action a {
+    color: black;
+    font-weight: 900;
+    text-decoration: none;
+}
+.origin-action-hide {
+    display: none;
+}
+.user {
+    margin-top: 5%;
+    cursor: pointer;
+    font-weight: 900;
+}
+.user-action {
+    margin-left: 10%;
+}
+.user-action a {
+    color: black;
+    font-weight: 900;
+    text-decoration: none;
+}
+.user-action-hide {
+    display: none;
+}

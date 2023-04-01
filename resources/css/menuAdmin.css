@@ -1,0 +1,116 @@
+.menu {
+    background-color: antiquewhite;
+    width: 12%;
+    height: 89%;
+    margin: 0 1% 0 1%;
+    padding-left: 1%;
+    border-radius: 15px;
+}
+.homepage {
+    margin-top: 5%;
+}
+.homepage a {
+    text-decoration: none;
+    color: black;
+    font-weight: 900;
+}
+.girl {
+    margin-top: 5%;
+    cursor: pointer;
+    font-weight: 900;
+}
+.girl-action {
+    margin-left: 10%;
+}
+.girl-action a {
+    color: black;
+    font-weight: 900;
+    text-decoration: none;
+}
+.girl-action-hide {
+    display: none;
+}
+.girl-list {
+    font-weight: 900;
+    cursor: pointer;
+}
+.origin {
+    margin-top: 5%;
+    cursor: pointer;
+    font-weight: 900;
+}
+.origin-action {
+    margin-left: 10%;
+}
+.origin-action a {
+    color: black;
+    font-weight: 900;
+    text-decoration: none;
+}
+.origin-action-hide {
+    display: none;
+}
+.photo {
+    margin-top: 5%;
+    cursor: pointer;
+    font-weight: 900;
+}
+.photo-action {
+    margin-left: 10%;
+}
+.photo-action a {
+    color: black;
+    font-weight: 900;
+    text-decoration: none;
+}
+.photo-action-hide {
+    display: none;
+}
+.level {
+    margin-top: 5%;
+    cursor: pointer;
+    font-weight: 900;
+}
+.level-action {
+    margin-left: 10%;
+}
+.level-action a {
+    color: black;
+    font-weight: 900;
+    text-decoration: none;
+}
+.level-action-hide {
+    display: none;
+}
+.account {
+    margin-top: 5%;
+    cursor: pointer;
+    font-weight: 900;
+}
+.account-action {
+    margin-left: 10%;
+}
+.account-action a {
+    color: black;
+    font-weight: 900;
+    text-decoration: none;
+}
+.account-action-hide {
+    display: none;
+}
+.user {
+    margin-top: 5%;
+    cursor: pointer;
+    font-weight: 900;
+}
+.user-action {
+    margin-left: 10%;
+}
+.user-action a {
+    color: black;
+    font-weight: 900;
+    text-decoration: none;
+}
+.user-action-hide {
+    display: none;
+}

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use \App\Models\Account;
 
 class AccountController extends Controller
@@ -16,8 +15,10 @@ class AccountController extends Controller
             'account_name' =>'required|min:5',
             'account_password' =>'required|min:5',
         ]);
+            // Lấy dữ liệu từ form và mã hóa
         $account_name = $request->account_name;
         $account_password = md5('dlyn'.$request->account_password.'dlyn');
+            // kiểm tra xem tài khoản đã tồn tại chưa
         $check = \App\Models\Account::where('account_name', 'like', $account_name)->get()->count();
         if($check == 0) {
             $accounts = new Account();
@@ -28,9 +29,9 @@ class AccountController extends Controller
             $accounts->updated_at = date('d-m-y');
             $accounts->save();
             if($accounts) {
-                session()->put('message', 'Đăng ký thành công');
+                session()->flash('message', 'Đăng ký thành công');
             } else {
-                session()->put('message', 'Đăng ký không thành công');
+                session()->flash('message', 'Đăng ký không thành công');
             }
         }
         return redirect('signin');
@@ -43,14 +44,16 @@ class AccountController extends Controller
             'account_name' =>'required|min:5',
             'account_password' =>'required|min:5',
         ]);
+            // Lấy dữ liệu từ form và mã hóa
         $account_name = $request->account_name;
         $account_password = md5('dlyn'.$request->account_password.'dlyn');
+            // Kiểm tra đúng tài khoản và mật khẩu không
         $accounts = \App\Models\Account::where('account_name', 'like', $account_name)
                                     ->where('account_password', 'like', $account_password)
                                     ->get();
         $count = $accounts->count();
         if($count == 0) {
-            session()->put('message', 'Sai tên hoặc mật khẩu');
+            session()->flash('message', 'Sai tên hoặc mật khẩu');
             return redirect('signin');
         } else {
             foreach($accounts as $account) {
@@ -63,6 +66,7 @@ class AccountController extends Controller
         }
     }
     public function signout() {
+            // xóa toàn bộ session
         session()->flush();
         return redirect('');
     }
@@ -109,9 +113,9 @@ class AccountController extends Controller
                                                 'updated_at' => $updated_at,
                                     ));
         if($update) {
-            session()->put('message', 'Cập nhật thành công');
+            session()->flash('message', 'Cập nhật thành công');
         } else {
-            ession()->put('message', 'Cập nhật không thành công');
+            ession()->flash('message', 'Cập nhật không thành công');
         }
         return redirect('account');
     }
@@ -130,7 +134,7 @@ class AccountController extends Controller
                                     ->where('account_password', 'like', $current_password)
                                     ->get()->count();
         if($check == 0) {
-            session()->put('message', 'mật khẩu hiện tại không đúng');
+            session()->flash('message', 'mật khẩu hiện tại không đúng');
             return redirect('change_password');
         } else {
             $update = \App\Models\Account::where('account_id', '=', $account_id)
@@ -139,10 +143,10 @@ class AccountController extends Controller
                                         ));
             if($update) {
                 session()->flush();
-                session()->put('message', 'Cập nhật thành công. Mời đăng nhập lại.');
+                session()->flash('message', 'Cập nhật thành công. Mời đăng nhập lại.');
                 return redirect('signin');
             } else {
-                session()->put('message', 'Cập nhật không thành công');
+                session()->flash('message', 'Cập nhật không thành công');
                 return redirect('change_password');
             }
         }

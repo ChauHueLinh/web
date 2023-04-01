@@ -23,7 +23,6 @@
                 @php
                     if (session()->has('message')) {
                         echo session('message');
-                        session()->forget('message');
                     }
                 @endphp
                 <div>

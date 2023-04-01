@@ -1,29 +1,17 @@
-html {
-    height: 100%;
-}
 body {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     margin:0;
     padding:0;
-    font-family: sans-serif;
     background: linear-gradient(#141e30, #243b55);
     display: flex;
     flex-wrap: wrap;
-    font-weight: bolder;
-}
-.menu a {
-    text-decoration: none;
-    color: black;
-}
-.menu a:hover {
-    font-size: 25px;
-    color: aqua;
 }
 .logo {
-    width: 17%;
-    height: 15%;
-    margin-left: 3%;
+    width: 13%;
+    height: 13%;
+    margin-left: 1%;
+    margin-top: 1%;
     color: aquamarine;
     text-align: center;
     font-size: 100px;
@@ -31,56 +19,27 @@ body {
     align-items: start;
 }
 .logo img {
-    margin-top: 7%;
-    height: 70%;
+    height: 100%;
+    width: 100%;
     border-radius: 15px;
-    border: aquamarine solid 2px;
 }
 .banner {
-    width: 51%;
-    height: 15%;
-    margin-left: 2%;
-    margin-right: 2%;
-}
-.search {
-    width: 22%;
-    height: 15%;
-    align-items: end;
-}
-.menu {
-    background-color: antiquewhite;
-    width: 17%;
-    height: 83%;
-    margin-left: 3%;
-    border-radius: 15px;
-}
-.menu div {
-    width: 90%;
-    height: fit-content;
-    margin: 30px 0 0 10%;
-    font-size: 20px;
-    font-weight: bolder;
-}
-.menu ol {
-    list-style-type: none;
-    padding: 0;
-}
-.menu ol li {
-    margin-left: 10%;
-    display: none;
-}
-.menu ol:hover li {
-    display: block;
+    width: 84%;
+    height: 13%;
+    margin-left: 1%;
+    margin-top: 1%;
 }
 .content {
-    width: 75%;
-    height: 83%;
+    width: 84%;
+    height: 84%;
     background-color: antiquewhite;
-    margin: 0 0 2% 2%;
     border-radius: 15px;
     display: flex;
     flex-wrap: wrap;
     overflow-y: scroll;
+}
+::-webkit-scrollbar {
+    display: none;
 }
 .title {
     width: 90%;

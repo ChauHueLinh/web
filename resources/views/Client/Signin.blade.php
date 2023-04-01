@@ -16,7 +16,6 @@
                 @php
                     if (session()->has('message')) {
                         echo session('message');
-                        session()->forget('message');
                     }
                 @endphp
                 <div>
@@ -28,7 +27,7 @@
                 <div>
                     Password
                     <br>
-                    <input type="text" name="account_password">
+                    <input type="password" name="account_password">
                 </div>
                 <br>
                 <button type="submit">

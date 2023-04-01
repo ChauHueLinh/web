@@ -9,11 +9,12 @@ class ClientController extends Controller
     public function girls(Request $request) {
         if($request->has('name')) {
             $request->validate([
-                'name' => 'required|min:2',
+                'name' => 'required|min:1',
             ]);
             $girls = \App\Models\Girl::join('origins', 'origins.origin_id', '=', 'girls.origin_id')
                                     ->select('girl_id', 'girl_name', 'girl_avatar', 'origin_name', 'price')
                                     ->where('girl_name', 'like', '%'.$request->name.'%')
+                                    ->orwhere('girl_id', '=', $request->name)
                                     ->orderBy('girl_id', 'desc')
                                     ->Paginate(10);
         } else if($request->has('origin_id')) {

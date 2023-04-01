@@ -1,11 +1,8 @@
-<div>
-    <ol>
-        Girl
-        <li>
-            <a href=".\girl">Girl List</a>
-        </li>
-        <li>
-            <a href=".\add_girl">Add Girl</a>
-        </li>
-    </ol>
+<div class="girl" id="girl">
+    Girl
+</div>
+<div class="girl-action-hide" id="girl-action">
+    <a href=".\girl">Girl List</a>
+    <br>
+    <a href=".\add_girl">Add Girl</a>
 </div>
