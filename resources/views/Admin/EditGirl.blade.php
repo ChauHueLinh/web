@@ -70,7 +70,7 @@
                     <br><br>
                     girl_avatar
                     <br>
-                    <img src="{{ $girl->girl_avatar }}" alt="">
+                    <img src="../public/photos/{{ $girl->folder }}/{{ $girl->girl_avatar }}" alt="">
                     <br><br>
                     Origin
                     <br>

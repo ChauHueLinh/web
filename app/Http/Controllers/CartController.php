@@ -24,6 +24,7 @@ class CartController extends Controller
                 $girl['girl_id'] = $girl_id;
                 $girl['girl_name'] = $value->girl_name;
                 $girl['girl_avatar'] = $value->girl_avatar;
+                $girl['folder'] = $value->folder;
                 $girl['quantity'] = 1;
                 $girl['price'] = $value->price;
                 $girl['total'] = $value->price;;
@@ -38,6 +39,7 @@ class CartController extends Controller
             $girl['girl_id'] = $girl_id;
             $girl['girl_name'] = $value->girl_name;
             $girl['girl_avatar'] = $value->girl_avatar;
+            $girl['folder'] = $value->folder;
             $girl['quantity'] = 1;
             $girl['price'] = $value->price;
             $girl['total'] = $value->price;

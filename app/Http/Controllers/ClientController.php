@@ -12,25 +12,25 @@ class ClientController extends Controller
                 'name' => 'required|min:1',
             ]);
             $girls = \App\Models\Girl::join('origins', 'origins.origin_id', '=', 'girls.origin_id')
-                                    ->select('girl_id', 'girl_name', 'girl_avatar', 'origin_name', 'price')
+                                    ->select('girl_id', 'girl_name', 'girl_avatar', 'origin_name', 'price', 'folder')
                                     ->where('girl_name', 'like', '%'.$request->name.'%')
                                     ->orwhere('girl_id', '=', $request->name)
                                     ->orderBy('girl_id', 'desc')
                                     ->Paginate(10);
         } else if($request->has('origin_id')) {
-            $girls = \App\Models\Girl::select('girl_id', 'girl_name', 'girl_avatar', 'price')
+            $girls = \App\Models\Girl::select('girl_id', 'girl_name', 'girl_avatar', 'price', 'folder')
                                     ->where('origin_id', '=', $request->origin_id)
                                     ->orderBy('girl_id', 'desc')
                                     ->Paginate(10);
         } else {
             $girls = \App\Models\Girl::join('origins', 'origins.origin_id', '=', 'girls.origin_id')
-                                    ->select('girl_id', 'girl_name', 'girl_avatar', 'origin_name' , 'price')
+                                    ->select('girl_id', 'girl_name', 'girl_avatar', 'origin_name' , 'price', 'folder')
                                     ->orderBy('girl_id', 'desc')
                                     ->Paginate(10);
         }
         $check = $girls->count();
         if($check == 0) {
-            session()->put('message', 'Không tìm thấy kết quả');
+            session()->flash('message', 'Không tìm thấy kết quả');
         }
         $origins = \App\Models\Origin::all();
         return view(view: 'Client\Girls', data: compact('girls', 'origins'));
@@ -38,7 +38,7 @@ class ClientController extends Controller
     public function view_girl(Request $request) {
         $girl_id = $request->id;
         $girls =  $girls = \App\Models\Girl::join('origins', 'origins.origin_id', '=', 'girls.origin_id')
-                                            ->select('girl_id', 'girl_name', 'girl_avatar', 'origin_name', 'price')
+                                            ->select('girl_id', 'girl_name', 'girl_avatar', 'origin_name', 'price', 'folder')
                                             ->where('girl_id', '=', $girl_id)
                                             ->get();
         $origins = \App\Models\Origin::all();

@@ -89,7 +89,7 @@
         @foreach ($girls as $girl)
         <div class="girl">
             <div class="avatar">
-                <img src="{{ $girl->girl_avatar }}" alt="">
+                <img src="../public/photos/{{ $girl->folder }}/{{ $girl->girl_avatar }}" alt="">
             </div>
             <div class="detail">
                 <div>
@@ -109,10 +109,10 @@
         </div>
         @endforeach
         <div class="line"></div>
-        <div class="photo">
+        <div class="photos">
             @foreach ($photos as $photo)
                 <div class="item">
-                    <img src="{{ $photo->url }}" alt="">
+                    <img src="../public/photos/{{ $photo->folder }}/{{ $photo->name }}" alt="">
                 </div>
             @endforeach     
         </div>

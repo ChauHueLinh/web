@@ -96,7 +96,7 @@
                 <div>{{ $girl['girl_id'] }}</div>
                 <div>{{ $girl['girl_name'] }}</div>
                 <div>
-                    <img src="{{ $girl['girl_avatar'] }}" alt="">
+                    <img src="../public/photos/{{ $girl['folder'] }}/{{ $girl['girl_avatar'] }}" alt="">
                 </div>
                 <div>
                     <button>
@@ -119,5 +119,6 @@
             </div>
         </div>
     </div>
+    <script src="../resources/js/menuClient.js"></script>
 </body>
 </html>

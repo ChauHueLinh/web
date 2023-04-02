@@ -88,7 +88,7 @@
                 @endswitch
                 <a href=".\add_photo?girl_id={{ $girl->girl_id }}">Add photo</a>
             </div>
-            <img src="{{ $girl->girl_avatar }}" alt="">
+            <img src="../public/photos/{{ $girl->folder }}/{{ $girl->girl_avatar }}" alt="">
         </div>
         @endforeach
         <div class="page">

@@ -9,9 +9,9 @@ class PhotoController extends Controller
 {
     public function photo() {
         $photos = \App\Models\Photo::join('girls', 'girls.girl_id', '=', 'photos.girl_id')
-                                    ->select('girl_name', 'photo_id', 'url')
+                                    ->select('girl_name', 'photo_id', 'photos.folder', 'name')
                                     ->orderBy('photo_id', 'desc')
-                                    ->paginate(10);
+                                    ->get();
         return view(view: 'Admin\Photo', data: compact('photos'));
     }
     public function add_photo (Request $request) {
@@ -59,11 +59,11 @@ class PhotoController extends Controller
         foreach ($photos as $photo) {
             $extension = $photo->extension();
             $photo_name = $trim . microtime() . '.' . $extension;
-            $photo->move(public_path('photos') . '\\' . $folder, $photo_name);
-            $url = '.' . '\\' . 'photos' . '\\' . $folder . '\\' . $photo_name;
+            $photo->move(public_path('photos') . '/' . $folder, $photo_name);
             $creat = new Photo();
-            $creat->url = $url;
+            $creat->name = $photo_name;
             $creat->girl_id = $girl_id;
+            $creat->folder = $folder;
             $creat->save();
         }
         return redirect('photo');
@@ -72,7 +72,7 @@ class PhotoController extends Controller
         $photo_id = $request->id;
         $photos = \App\Models\photo::where('photo_id', '=', $photo_id)->get();
         foreach($photos as $photo) {
-            unlink(public_path() . $photo->url);
+            unlink(public_path() . $photo->name);
             $delete = \App\Models\photo::where('photo_id', '=', $photo->photo_id)->delete();
         }
         return back();

@@ -57,20 +57,34 @@
                 session()->forget('message');
             }
         @endphp
-        @foreach ($photos as $photo)
-        <div class="card">
-            <div>
-                <a href="">{{ $photo->girl_name }}</a>
-                <br>
-                <a href=".\delete_photo?id={{ $photo->photo_id }}">Delete</a>
+        <div class="photos">
+            @foreach ($photos as $photo)
+            <div class="card">
+                <div class="detail">
+                    <a href="">{{ $photo->girl_name }}</a>
+                    <br>
+                    <a href=".\delete_photo?id={{ $photo->photo_id }}">Delete</a>
+                </div>
+                <img src="../public/photos/{{ $photo->folder }}/{{ $photo->name }}" alt="">
             </div>
-            <img src="{{ $photo->url }}" alt="">
+            @endforeach
         </div>
-        @endforeach
-        <div class="page">
-            {{ $photos->links() }}
+    </div>
+    <div class="gallery">
+        <div class="close">
+            <img src=".\photos\default\close.png" alt="">
+        </div>
+        <div class="gallery-img">
+            <img src="" alt="">
+        </div>
+        <div class="previous">
+            <img src=".\photos\default\previous.png" alt="">
+        </div>
+        <div class="next">
+            <img src=".\photos\default\next.png" alt="">
         </div>
     </div>
     <script src="../resources/js/menuAdmin.js"></script>
+    <script src="../resources/js/viewPhoto.js"></script>
 </body>
 </html>

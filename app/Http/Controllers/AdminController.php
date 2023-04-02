@@ -21,13 +21,13 @@ class AdminController extends Controller
                 'name' => 'required|min:2',
             ]);
             $girls = \App\Models\Girl::join('origins', 'origins.origin_id', '=', 'girls.origin_id')
-                                    ->select('girl_id', 'girl_name', 'girl_avatar', 'girl_info', 'origin_name', 'price')
+                                    ->select('girl_id', 'girl_name', 'girl_avatar', 'girl_info', 'origin_name', 'price', 'folder')
                                     ->where('girl_name', 'like', '%'.$request->name.'%')
                                     ->orderBy('girl_id', 'desc')
                                     ->Paginate(10);
         } else {
             $girls = \App\Models\Girl::join('origins', 'origins.origin_id', '=', 'girls.origin_id')
-                                        ->select('girl_id', 'girl_name', 'girl_avatar', 'girl_info', 'origin_name', 'price')
+                                        ->select('girl_id', 'girl_name', 'girl_avatar', 'girl_info', 'origin_name', 'price', 'folder')
                                         ->orderBy('girl_id', 'desc')
                                         ->Paginate(10);
         }
@@ -89,11 +89,10 @@ class AdminController extends Controller
             $girl_avatar = $request->girl_avatar;
             $extension = $request->girl_avatar->extension();
             $girl_avatar_name = $trim . time() . '.' . $extension;
-            $folder = public_path('photos') . '\\' . $trim . '_' . date('d-m-y');
+            $folder = $trim . '_' . date('d-m-y');
             mkdir($folder, 0700);
-            $girl_avatar->move($folder, $girl_avatar_name);
-            $path_girl_avatar = '.' . '\\' . 'photos' . '\\' . $trim . '_' . date('d-m-y') . '\\' . $girl_avatar_name;
-            $girl->girl_avatar = $path_girl_avatar;
+            $girl_avatar->move(public_path('photos') . '/' . $folder, $girl_avatar_name);
+            $girl->girl_avatar = $girl_avatar_name;
             $girl->origin_id = $request->origin_id;
             $girl->folder = $trim . '_' . date('d-m-y');
             $girl->save();
@@ -104,7 +103,8 @@ class AdminController extends Controller
                     
                 }
                 $photos = new Photo();
-                $photos->url = $path_girl_avatar;
+                $photos->folder = $folder;
+                $photos->name = $girl_avatar_name;
                 $photos->girl_id = $girl_id->girl_id;
                 $photos->save();
             } else {
@@ -123,9 +123,9 @@ class AdminController extends Controller
         }
         $photos = \App\Models\Photo::where('girl_id', '=', $girl_id)->get();
         foreach ($photos as $photo) {
-            unlink(public_path() . $photo->url);
+            unlink(public_path() . '/' . 'photos' . '/' . $girl->folder . '/' . $photo->url);
         }
-        rmdir(public_path('photos') . '\\' . $girl->folder);
+        rmdir(public_path('photos') . '/' . $girl->folder);
         $delete_girl = \App\Models\Girl::where('girl_id', '=', $girl_id)->delete();
         $delete_photo = \App\Models\Photo::where('girl_id', '=', $girl_id)->delete();
         session()->put('message', 'Xóa thành công');
@@ -134,7 +134,7 @@ class AdminController extends Controller
     public function edit_girl(Request $request) {
         $girl_id = $request->id;
         $girls = \App\Models\Girl::join('origins', 'origins.origin_id', '=', 'girls.origin_id')
-                                ->select('girl_id', 'girl_name', 'girl_avatar', 'girl_info', 'origin_name')
+                                ->select('girl_id', 'girl_name', 'girl_avatar', 'girl_info', 'origin_name', 'folder')
                                 ->where('girl_id', '=', $girl_id)->get();
         $origins = \App\Models\Origin::all();
         return view(view: 'Admin\EditGirl', data: compact('girls', 'origins'));
@@ -189,19 +189,18 @@ class AdminController extends Controller
         }
         $extension = $file_avatar->extension();
         $file_avatar_name = $trim . time() . '.' . $extension;
-        $file_avatar->move(public_path('photos') . '\\' . $folder->folder, $file_avatar_name);
-        $path_girl_avatar = '.' . '\\' . 'photos' . '\\' . $folder->folder . '\\' . $file_avatar_name;
-        $girl_avatar = $path_girl_avatar;
+        $file_avatar->move(public_path('photos') . '/' . $folder->folder, $file_avatar_name);
         $update_girl = \App\Models\Girl::where('girl_id', '=', $girl_id)
                                         ->update(array(
                                             'girl_name' => $girl_name,
                                             'girl_info' => $girl_info,
-                                            'girl_avatar' => $girl_avatar,
+                                            'girl_avatar' => $file_avatar_name,
                                             'origin_id' => $origin_id,
                                             'updated_at' => $updated_at,
                                         ));
         $photos = new Photo();
-        $photos->url = $path_girl_avatar;
+        $photos->folder = $folder->folder;
+        $photos->name = $file_avatar_name;
         $photos->girl_id = $girl_id;
         $photos->save();
         session()->put('message', 'Update successfully');

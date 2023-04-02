@@ -28,8 +28,17 @@ body {
     height: 89%;
     background-color: antiquewhite;
     border-radius: 15px;
+}
+.photos {
+    width: 100%;
+    height: 100%;
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
+    overflow-y: scroll;
+}
+::-webkit-scrollbar {
+    display: none;
 }
 .card {
     width: 16.4%;
@@ -39,9 +48,10 @@ body {
     border-radius: 15px;
     color: black;  
     position: relative;
+    cursor: pointer;
 }
-.card div {
-    width: 90%;
+.detail {
+    width: fit-content;
     height: fit-content;
     word-break:break-all;
     position: absolute;
@@ -90,3 +100,62 @@ body {
 .page-item :hover {
     color: aquamarine;
 }
+.gallery {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.8);
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+.gallery-img {
+    height: 100%;
+}
+.gallery-img img {
+    height: 90%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    border-radius: 15px;
+    border: black 2px solid;
+}
+.close {
+    position: absolute;
+    width: 50px;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+}
+.close img {
+    width: 100%;
+}
+.previous {
+    position: absolute;
+    width: 50px;
+    left: 15px;
+    top: 50%;
+    cursor: pointer;
+}
+.previous img {
+    width: 100%;
+}
+.next {
+    position: absolute;
+    width: 50px;
+    right: 15px;
+    top: 50%;
+    cursor: pointer;
+}
+.next img {
+    width: 100%;
+}
+

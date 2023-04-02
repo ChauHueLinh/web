@@ -5,37 +5,36 @@ const next = document.querySelector('.next');
 const gallery = document.querySelector('.gallery');
 const galleryImg = document.querySelector('.gallery-img img');
 
-let imgIndex = 0;
-let images = document.querySelectorAll('.item img');
-let lengthImages = images.length;
+let index = 0;
+let images = document.querySelectorAll('.photos img');
+let length = images.length;
+
 
 images.forEach((item, index) => {
     item.addEventListener('click', function() {
-        imgIndex = index;
+        index = index;
         gallery.classList.add('show');
-        galleryImg.src = images[imgIndex].src;
-    })
+        galleryImg.src = images[index].src;
+    });
 });
-
 close.addEventListener('click', function() {
     gallery.classList.remove('show');
 });
 
 previous.addEventListener('click', function() {
-    if(imgIndex > 0) {
-        imgIndex--;
+    if(index > 0) {
+        index--;
     } else {
-        imgIndex = lengthImages - 1;
+        index = length - 1;
     }
-    galleryImg.src = images[imgIndex].src;
+    galleryImg.src = images[index].src;
 });
 
 next.addEventListener('click', function() {
-    if(imgIndex < lengthImages - 1) {
-        imgIndex++;
+    if(index < length - 1) {
+        index++;
     } else {
-        imgIndex = 0;
+        index = 0;
     }
-    galleryImg.src = images[imgIndex].src;
+    galleryImg.src = images[index].src;
 });
-// console.log(imgs);

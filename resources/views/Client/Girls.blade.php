@@ -111,7 +111,7 @@
                     <a href="add_to_cart?id={{ $girl->girl_id }}">Add to cart</a>
                 </button>
             </div>
-            <img src="{{ $girl->girl_avatar }}" alt="">
+            <img src="../public/photos/{{ $girl->folder }}/{{ $girl->girl_avatar }}" alt="">
         </div>
         @endforeach
         <div class="page">
