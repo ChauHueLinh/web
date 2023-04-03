@@ -37,15 +37,15 @@ class ClientController extends Controller
     }
     public function view_girl(Request $request) {
         $girl_id = $request->id;
-        $girls =  $girls = \App\Models\Girl::join('origins', 'origins.origin_id', '=', 'girls.origin_id')
+        $girls = \App\Models\Girl::join('origins', 'origins.origin_id', '=', 'girls.origin_id')
                                             ->select('girl_id', 'girl_name', 'girl_avatar', 'origin_name', 'price', 'folder')
                                             ->where('girl_id', '=', $girl_id)
                                             ->get();
         $origins = \App\Models\Origin::all();
         $photos = \App\Models\Photo::where('girl_id', '=', $girl_id)
                                     ->orderBy('photo_id', 'desc')
-                                    ->Paginate(16);
-        $photos->setPath('?id=' . $girl_id);
+                                    ->get();
+        // $photos->setPath('?id=' . $girl_id);
         return view(view: 'Client\ViewGirl', data: compact('girls', 'photos', 'origins'));
     }
 }

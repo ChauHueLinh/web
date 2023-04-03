@@ -22,7 +22,7 @@
         </div>
         <div class="origin-action-hide" id="origin-action">
             @foreach($origins as $origin)
-                <a href="?origin_id={{ $origin->origin_id }}">{{ $origin->origin_name }}</a>
+                <a href="./?origin_id={{ $origin->origin_id }}">{{ $origin->origin_name }}</a>
                 <br>
             @endforeach
         </div>
@@ -116,9 +116,9 @@
                 </div>
             @endforeach     
         </div>
-        <div class="page">
+        {{-- <div class="page">
             {{ $photos->links() }}
-        </div>
+        </div> --}}
     </div>
     <div class="gallery">
         <div class="close">

@@ -11,7 +11,7 @@ class PhotoController extends Controller
         $photos = \App\Models\Photo::join('girls', 'girls.girl_id', '=', 'photos.girl_id')
                                     ->select('girl_name', 'photo_id', 'photos.folder', 'name')
                                     ->orderBy('photo_id', 'desc')
-                                    ->get();
+                                    ->Paginate(200);
         return view(view: 'Admin\Photo', data: compact('photos'));
     }
     public function add_photo (Request $request) {
@@ -72,7 +72,7 @@ class PhotoController extends Controller
         $photo_id = $request->id;
         $photos = \App\Models\photo::where('photo_id', '=', $photo_id)->get();
         foreach($photos as $photo) {
-            unlink(public_path() . $photo->name);
+            unlink(public_path('photos') . '/' . $photo->folder . '/' . $photo->name);
             $delete = \App\Models\photo::where('photo_id', '=', $photo->photo_id)->delete();
         }
         return back();

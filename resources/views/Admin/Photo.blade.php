@@ -68,6 +68,9 @@
                 <img src="../public/photos/{{ $photo->folder }}/{{ $photo->name }}" alt="">
             </div>
             @endforeach
+            <div class="page">
+                {{ $photos->links() }}
+            </div>
         </div>
     </div>
     <div class="gallery">
