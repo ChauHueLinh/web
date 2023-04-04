@@ -78,10 +78,10 @@
                 <br>
                 @switch(session('level_id'))
                     @case(1)
-                        <a href=".\edit_girl?id={{ $girl->girl_id }}">Edit</a> | <a href=".\delete_girl?id={{ $girl->girl_id }}">Delete</a>
+                        <a href=".\edit_girl?id={{ $girl->girl_id }}">Edit</a> | <a href=".\delete_girl?id={{ $girl->girl_id }}">Delete</a> |
                         @break
                     @case(2)
-                        <a href=".\edit_girl?id={{ $girl->girl_id }}">Edit</a>
+                        <a href=".\edit_girl?id={{ $girl->girl_id }}">Edit</a> |
                         @break
                     @default
                         

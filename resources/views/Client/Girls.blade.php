@@ -95,7 +95,7 @@
         @endphp
         @foreach ($girls as $girl)
         <div class="card">
-            <div>
+            <div class="detail">
                 <a href="">ID: {{ $girl->girl_id }}</a>
                 <br>
                 <a href="">{{ $girl->girl_name }}</a>
@@ -111,7 +111,9 @@
                     <a href="add_to_cart?id={{ $girl->girl_id }}">Add to cart</a>
                 </button>
             </div>
-            <img src="../public/photos/{{ $girl->folder }}/{{ $girl->girl_avatar }}" alt="">
+            <div class="img">
+                <img src="../public/photos/{{ $girl->folder }}/{{ $girl->girl_avatar }}" alt="">
+            </div>
         </div>
         @endforeach
         <div class="page">
