@@ -2,11 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 session_start();
+
 // start Client
 Route::get('/', action: [\App\Http\Controllers\ClientController::class, 'girls'])->name('girls');
 Route::get('/view_girl', action: [\App\Http\Controllers\ClientController::class, 'view_girl'])->name('view_girl');
 
 // start Account
+Route::get('/cookie', action: [\App\Http\Controllers\AccountController::class, 'cookie'])->name('cookie');
 Route::get('/signup', action: [\App\Http\Controllers\AccountController::class, 'signup'])->name('signup');
 Route::post('/signup_process', action: [\App\Http\Controllers\AccountController::class, 'signup_process'])->name('signup_process');
 Route::get('/signin', action: [\App\Http\Controllers\AccountController::class, 'signin'])->name('signin');

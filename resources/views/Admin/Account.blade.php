@@ -1,4 +1,5 @@
 @php
+    require_once '.\menus\cookie.php';
     if (session()->has('account_name')) {
         switch (session('level_id')) {
             case (1):

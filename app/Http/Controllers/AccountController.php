@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Models\Account;
+use Cookie;
 
 class AccountController extends Controller
 {
@@ -47,6 +48,8 @@ class AccountController extends Controller
             // Lấy dữ liệu từ form và mã hóa
         $account_name = $request->account_name;
         $account_password = md5('dlyn'.$request->account_password.'dlyn');
+        $token = 'user_' . $request->_token . time();
+        $remember = $request->remember;
             // Kiểm tra đúng tài khoản và mật khẩu không
         $accounts = \App\Models\Account::where('account_name', 'like', $account_name)
                                     ->where('account_password', 'like', $account_password)
@@ -59,6 +62,13 @@ class AccountController extends Controller
             foreach($accounts as $account) {
 
             }
+            if($remember) {
+                $update = \App\Models\Account::where('account_name', 'like', $account_name)
+                                            ->update(array(
+                                                'token' => $token,
+                                            ));
+            }
+            setcookie('remember', $token, time() + (60*60*24*30));
             session()->put('account_id', $account->account_id);
             session()->put('account_name', $account->account_name);
             session()->put('level_id', $account->level_id);
@@ -68,6 +78,7 @@ class AccountController extends Controller
     public function signout() {
             // xóa toàn bộ session
         session()->flush();
+        setcookie("remember", "", time()-3600);
         return redirect('');
     }
     public function account(Request $request) {
@@ -85,12 +96,12 @@ class AccountController extends Controller
             $count = $accounts->count();
             if($count == 0) {
                 session()->put('message', 'Không tìm thấy kết quả');
+            } else {
+                $accounts =  \App\Models\Account::join('levels', 'levels.level_id', '=', 'accounts.level_id')
+                                                ->select('account_id', 'account_name', 'level_name')
+                                                ->orderBy('account_id', 'desc')
+                                                ->get();
             }
-        } else {
-            $accounts =  \App\Models\Account::join('levels', 'levels.level_id', '=', 'accounts.level_id')
-                                            ->select('account_id', 'account_name', 'level_name')
-                                            ->orderBy('account_id', 'desc')
-                                            ->get();
         }
         return view(view: 'Admin\Account', data: compact('accounts'));
     }
@@ -150,5 +161,20 @@ class AccountController extends Controller
                 return redirect('change_password');
             }
         }
+    }
+    function cookie() {
+        $token = $_COOKIE['remember'];
+        $accounts = \App\Models\Account::where('token', 'like', $token)
+                                    ->get();
+        $count = $accounts->count();
+        if($count == 1) {
+            foreach($accounts as $account) {
+
+            }
+            session()->put('account_id', $account->account_id);
+            session()->put('account_name', $account->account_name);
+            session()->put('level_id', $account->level_id);
+        }
+        return back();
     }
 }

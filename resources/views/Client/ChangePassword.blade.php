@@ -1,5 +1,6 @@
 
 @php
+    require_once '.\menus\cookie.php';
     if(empty(session('account_id'))) {
         header("location: signin");
         exit;

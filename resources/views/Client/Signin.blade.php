@@ -1,10 +1,14 @@
+
+@php
+    require_once '.\menus\cookie.php';
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="..\resources\css\Signup.css">
+    <link rel="stylesheet" href="..\resources\css\Signin.css">
     <title>Signin</title>
 </head>
 <body>
@@ -18,16 +22,21 @@
                         echo session('message');
                     }
                 @endphp
-                <div>
+                <div class="name">
                     Name
                     <br>
                     <input type="text" name="account_name">
                 </div>
                 <br>
-                <div>
+                <div class="password">
                     Password
                     <br>
                     <input type="password" name="account_password">
+                </div>
+                <br>
+                <div class="remember">
+                    Ghi nhớ đăng nhập
+                    <input type="checkbox" name="remember">
                 </div>
                 <br>
                 <button type="submit">
