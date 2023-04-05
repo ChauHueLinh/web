@@ -1,17 +1,6 @@
 @php
     require_once '.\menus\cookie.php';
-    if (session()->has('account_name')) {
-        switch (session('level_id')) {
-            case (1):
-            break;
-            default:
-                header("Location: signin");
-                exit;
-        }
-    } else {
-        header("location: signin");
-        exit;
-    }
+    require_once '.\menus\levelBoss.php';
 @endphp
 <!DOCTYPE html>
 <html lang="en">
@@ -37,15 +26,8 @@
                 require_once '.\menus\level.php';
                 require_once '.\menus\account.php';
             }
-        @endphp 
-        <div class="user" id="user">
-            @php
-                echo 'User: ' . session('account_name');
-            @endphp
-        </div>
-        <div class="user-action-hide" id="user-action">
-            <a href="signout">Signout</a>
-        </div>   
+            require_once './menus/user.php';
+        @endphp    
     </div>
     <div class="content">
         <div class="title">

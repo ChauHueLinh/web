@@ -39,56 +39,13 @@
         <div class="cart">
             <a href=".\bill">
                 @php
-                    if(session()->has('total_item')) {
-                        if (session('total_item') == 1) {
-                            echo 'Cart: ' . session('total_item') . ' item';
-                        } else {
-                            echo 'Cart: ' . session('total_item') . ' items';
-                        }    
-                    }
+                    require_once '.\menus\bill.php';
                 @endphp
             </a>
         </div>
-        <div class="user" id="user">
-            @php
-                if (session()->has('account_name')) {
-                    echo 'User: ' . session('account_name');
-                } else {
-                    echo 'Account';
-                }
-            @endphp
-        </div>
-        <div class="user-action-hide" id="user-action">
-            @switch(session('level_id'))
-                @case(1)
-                    <a href="admin">Admin</a>
-                    <br>
-                    @break
-                @case(2)
-                    <a href="admin">Admin</a>
-                    <br>    
-                    @break
-                @case(3)
-                    <a href="admin">Admin</a>
-                    <br>
-                    @break
-                @default         
-            @endswitch
-            @if (session()->has('account_name'))
-                <a href="change_password">Change Password</a>
-                <br> 
-                <a href="signout">Signout</a>
-                <br> 
-            @else      
-                <a href="signin">Signin</a>
-                <br>
-                <a href="signup">Signup</a>
-                <br>
-            @endif
-        </div>
-        <div class="new-photo" id="new-photo">
-            <img src="" id="img">
-        </div>
+        @php
+            require_once '.\menus\userClient.php';
+        @endphp
     </div>
     <div class="content">
         @php

@@ -31,7 +31,7 @@ function previousPhoto() {
 };
 function nextPhoto() {
     if(indexImage < lengthImages - 1) {
-        indexImage = index++;
+        indexImage++;
     } else {
         indexImage = 0;
     }
@@ -55,9 +55,17 @@ document.addEventListener('keydown', function(e) {
         gallery.classList.remove('show');
     }
     if(e.keyCode == 37) {
-        previousPhoto();
+        if (gallery.getAttribute('class') === 'gallery') {
+
+        } else {
+            previousPhoto();
+        };
     }
     if(e.keyCode == 39) {
-        nextPhoto();
+        if (gallery.getAttribute('class') === 'gallery') {
+
+        } else {
+            nextPhoto();
+        };
     }
 });

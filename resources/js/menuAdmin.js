@@ -41,7 +41,10 @@ function changeClassPhotoAction() {
     }
     // console.log(photoActionClassAtrribute);
 }
-level.addEventListener("click", changeClassLevelAction);
+if(level) {
+    level.addEventListener("click", changeClassLevelAction);
+}
+
 function changeClassLevelAction() {
     let levelActionClassAtrribute = document.getElementById("level-action").getAttribute("class");
     if (levelActionClassAtrribute.search(/hide/) !== -1) {
@@ -51,7 +54,10 @@ function changeClassLevelAction() {
     }
     // console.log(levelActionClassAtrribute);
 }
-account.addEventListener("click", changeClassAccountAction);
+if(account) {
+    account.addEventListener("click", changeClassAccountAction);
+}
+
 function changeClassAccountAction() {
     let accountActionClassAtrribute = document.getElementById("account-action").getAttribute("class");
     if (accountActionClassAtrribute.search(/hide/) !== -1) {
@@ -69,6 +75,6 @@ function changeClassUserAction() {
     } else {
         userAction.setAttribute('class', 'user-action-hide');
     }
-    // console.log(userActionClassAtrribute);
+    console.log(userActionClassAtrribute);
 }
 

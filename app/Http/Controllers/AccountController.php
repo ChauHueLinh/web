@@ -96,12 +96,12 @@ class AccountController extends Controller
             $count = $accounts->count();
             if($count == 0) {
                 session()->put('message', 'Không tìm thấy kết quả');
-            } else {
-                $accounts =  \App\Models\Account::join('levels', 'levels.level_id', '=', 'accounts.level_id')
-                                                ->select('account_id', 'account_name', 'level_name')
-                                                ->orderBy('account_id', 'desc')
-                                                ->get();
             }
+        } else {
+            $accounts =  \App\Models\Account::join('levels', 'levels.level_id', '=', 'accounts.level_id')
+                                            ->select('account_id', 'account_name', 'level_name')
+                                            ->orderBy('account_id', 'desc')
+                                            ->get();
         }
         return view(view: 'Admin\Account', data: compact('accounts'));
     }
