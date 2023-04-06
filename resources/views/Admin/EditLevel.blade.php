@@ -27,6 +27,7 @@
                 require_once '.\menus\level.php';
                 require_once '.\menus\account.php';
             }
+            require_once './menus/bill.php';
             require_once './menus/user.php';
         @endphp 
     </div>

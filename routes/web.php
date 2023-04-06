@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 session_start();
-
+Route::get('/test', action: [\App\Http\Controllers\ClientController::class, 'test']);
 // start Client
 Route::get('/', action: [\App\Http\Controllers\ClientController::class, 'girls'])->name('girls');
 Route::get('/view_girl', action: [\App\Http\Controllers\ClientController::class, 'view_girl'])->name('view_girl');
+Route::get('/bill', action: [\App\Http\Controllers\CartController::class, 'bill'])->name('bill');
 
 // start Account
 Route::get('/cookie', action: [\App\Http\Controllers\AccountController::class, 'cookie'])->name('cookie');
@@ -49,8 +50,10 @@ Route::post('/add_level', action: [\App\Http\Controllers\AdminController::class,
 Route::get('/edit_level', action: [\App\Http\Controllers\AdminController::class, 'edit_level'])->name('edit_level');
 Route::post('/edit_level', action: [\App\Http\Controllers\AdminController::class, 'edit_level_process'])->name('edit_level_process');
 
+Route::get('/bills', action: [\App\Http\Controllers\AdminController::class, 'bills'])->name('bills');
 // start cart
 Route::get('/add_to_cart', action: [\App\Http\Controllers\CartController::class, 'add_to_cart'])->name('add_to_cart');
 Route::get('/remove_from_cart', action: [\App\Http\Controllers\CartController::class, 'remove_from_cart'])->name('remove_from_cart');
-Route::get('/bill', action: [\App\Http\Controllers\CartController::class, 'bill'])->name('bill');
+Route::get('/cart', action: [\App\Http\Controllers\CartController::class, 'cart'])->name('cart');
+Route::post('/cart', action: [\App\Http\Controllers\CartController::class, 'cart_process'])->name('cart_process');
 ?>

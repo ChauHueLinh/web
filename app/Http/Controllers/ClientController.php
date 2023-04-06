@@ -48,4 +48,6 @@ class ClientController extends Controller
         // $photos->setPath('?id=' . $girl_id);
         return view(view: 'Client\ViewGirl', data: compact('girls', 'photos', 'origins'));
     }
+    public function test() {      
+    }
 }

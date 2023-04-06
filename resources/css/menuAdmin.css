@@ -98,6 +98,14 @@
 .account-action-hide {
     display: none;
 }
+.bill {
+    margin-top: 5%;
+}
+.bill a {
+    text-decoration: none;
+    color: black;
+    font-weight: 900;
+}
 .user {
     margin-top: 5%;
     cursor: pointer;

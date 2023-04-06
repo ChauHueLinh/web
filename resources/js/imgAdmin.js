@@ -2,7 +2,6 @@ const images = document.getElementById('img');
 const imgs = [
     './photos/default/1.jpg',
     './photos/default/2.jpg',
-    './photos/default/3.jpg',
     './photos/default/4.jpg',
     './photos/default/5.jpg',
 ];

@@ -7,6 +7,8 @@ use \App\Models\Origin;
 use \App\Models\Girl;
 use \App\Models\Photo;
 use \App\Models\Level;
+use \App\Models\Bill;
+use \App\Models\Detail_bill;
 use File;
 
 class AdminController extends Controller
@@ -90,7 +92,7 @@ class AdminController extends Controller
             $extension = $request->girl_avatar->extension();
             $girl_avatar_name = $trim . time() . '.' . $extension;
             $folder = $trim . '_' . date('d-m-y');
-            mkdir($folder, 0700);
+            // mkdir($folder, 0700);
             $girl_avatar->move(public_path('photos') . '/' . $folder, $girl_avatar_name);
             $girl->girl_avatar = $girl_avatar_name;
             $girl->origin_id = $request->origin_id;
@@ -315,6 +317,20 @@ class AdminController extends Controller
             session()->put('message', 'Update không thành công');
         }
         return redirect('level');
+    }
+    public function bills () {
+        $bills = Bill::join('accounts', 'accounts.account_id', '=', 'bills.account_id')
+                    ->orderby('bill_id', 'desc')
+                    ->get();
+        foreach ($bills as $key => $bill) {
+            $detail_bills = Detail_bill::join('girls', 'girls.girl_id', '=', 'detail_bills.girl_id')
+                                        ->select('detail_bills.girl_id', 'girls.girl_name', 'quantity', 'girls.price', 'total')
+                                        ->where('bill_id', '=', $bill->bill_id)
+                                        ->get();
+            $bill->detail_bills = $detail_bills;
+        }
+        // echo json_encode($bills);
+        return view(view: 'Admin/bill', data:compact('bills'));
     }
 }
 ?>

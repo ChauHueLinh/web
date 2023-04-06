@@ -36,14 +36,9 @@
                 <br>
             @endforeach
         </div>
-        <div class="cart">
-            <a href=".\bill">
-                @php
-                    require_once '.\menus\bill.php';
-                @endphp
-            </a>
-        </div>
         @php
+            require_once '.\menus\cart.php';
+            require_once '.\menus\billClient.php';
             require_once '.\menus\userClient.php';
         @endphp
     </div>

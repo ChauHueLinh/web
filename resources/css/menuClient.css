@@ -22,6 +22,14 @@
     color: black;
     font-weight: 900;
 }
+.bill {
+    margin-top: 5%;
+}
+.bill a {
+    text-decoration: none;
+    color: black;
+    font-weight: 900;
+}
 .origin {
     margin-top: 5%;
     cursor: pointer;
