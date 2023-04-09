@@ -45,7 +45,7 @@ class AdminController extends Controller
     }
     public function add_girl_process(request $request) {
         $request->validate([
-            'girl_name' => 'required|min:4',
+            'girl_name' => 'required|min:3',
             'girl_info' => 'required|min:4',
             'girl_avatar' => 'required|min:4',
             'price' => 'required|min:3',
@@ -115,7 +115,7 @@ class AdminController extends Controller
         } else {
             session()->put('message', 'Đã tồn tại');
         }
-        return redirect ('add_girl');
+        return redirect ('girl');
     }
     public function delete_girl(Request $request) {
         $girl_id = $request->id;

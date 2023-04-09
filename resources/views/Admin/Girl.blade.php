@@ -17,6 +17,13 @@
         <div class="admin">Admin</div>
     </div>
     <div class="menu">
+        <br>
+        @php
+            if (session()->has('message')) {
+                echo session('message') . '!';
+                session()->forget('message');
+            }
+        @endphp
         <div class="search">
             <form action="">
                 <input type="text" name="name">
@@ -37,12 +44,6 @@
         @endphp 
     </div>
     <div class="content">
-        @php
-            if (session()->has('message')) {
-                echo session('message');
-                session()->forget('message');
-            }
-        @endphp
         @foreach ($girls as $girl)
         <div class="card">
             <div>

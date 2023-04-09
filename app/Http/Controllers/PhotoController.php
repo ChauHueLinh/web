@@ -66,7 +66,7 @@ class PhotoController extends Controller
             $creat->folder = $folder;
             $creat->save();
         }
-        return redirect('photo');
+        return redirect('add_girl');
     }
     public function delete_photo(Request $request) {
         $photo_id = $request->id;
